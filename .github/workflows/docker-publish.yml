@@ -86,16 +86,4 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Trivy Action
-        # You may pin to the exact commit or the version.
-        # uses: lazy-actions/gitrivy@6edf95fdc8b1fb841a974536316b209cd16f9000
-        uses: lazy-actions/gitrivy@v3
-        with:
-          # The target image name of vulnerability scan (specify this parameter or "IMAGE_NAME" environment variable
-          image: "Exki38/gitea_fork"
-          # severities of vulnerabilities (separated by commma)
-          #severity: UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL
-          # target vlunerability [os,library] (separated by commma)
-          vuln_type: os,library
-          # GitHub access token used to create a issue
-          token: ${{ secrets.GITHUB_TOKEN }}
+      
