@@ -91,10 +91,8 @@ jobs:
         # uses: lazy-actions/gitrivy@6edf95fdc8b1fb841a974536316b209cd16f9000
         uses: lazy-actions/gitrivy@v3
         with:
-          # Trivy version
-          trivy_version: # optional, default is latest
           # The target image name of vulnerability scan (specify this parameter or "IMAGE_NAME" environment variable
-          image: ${{ env.IMAGE_NAME }}
+          image: "Exki38/gitea_fork"
           # severities of vulnerabilities (separated by commma)
           severity: UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL
           # target vlunerability [os,library] (separated by commma)
