@@ -24,7 +24,10 @@ RUN if [ -n "${GITEA_VERSION}" ]; then git checkout "${GITEA_VERSION}"; fi \
 # Begin env-to-ini build
 RUN go build contrib/environment-to-ini/environment-to-ini.go
 
-FROM alpine:latest
+#FROM alpine:3.16
+FROM scratch
+ADD alpine-minirootfs-3.16.2-x86_64.tar.gz /
+CMD ["/bin/sh"]
 LABEL maintainer="maintainers@gitea.io"
 
 EXPOSE 22 3000
