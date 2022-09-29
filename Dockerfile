@@ -24,7 +24,7 @@ RUN if [ -n "${GITEA_VERSION}" ]; then git checkout "${GITEA_VERSION}"; fi \
 # Begin env-to-ini build
 RUN go build contrib/environment-to-ini/environment-to-ini.go
 
-FROM alpine:3.16.2
+FROM alpine:latest
 LABEL maintainer="maintainers@gitea.io"
 
 EXPOSE 22 3000
