@@ -6,13 +6,13 @@
 name: Trivy Scan
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
+ # push:
+ #   branches: [ "main" ]
+  #pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ "main" ]
-  schedule:
-    - cron: '29 22 * * 2'
+   # branches: [ "main" ]
+  #schedule:
+   # - cron: '29 22 * * 2'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -31,7 +31,7 @@ on:
       environment:
         description: 'Environment to run tests against'
         type: environment
-        required: true
+        required: false
 
 permissions:
   contents: read
