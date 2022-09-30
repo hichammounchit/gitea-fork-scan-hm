@@ -5,11 +5,11 @@ name: Create Gitea Docker from source
 # separate terms of service, privacy policy, and support
 # documentation.
 
-on: workflow_dispatch
+# section qui execute le workflow automatiquement à chaque commit 
+# on: 
   #schedule:
    # - cron: '45 9 * * *'
   
-
   #push:
    # branches: [ "main" ]
     # Publish semver tags as releases.
@@ -17,6 +17,7 @@ on: workflow_dispatch
   #pull_request:
    # branches: [ "main" ]
 
+on: workflow_dispatch
 env:
   # Use Github registry Hub if empty
   REGISTRY: ghcr.io
@@ -88,4 +89,17 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+
+      # Sign the resulting Docker image digest except on PRs.
+      # This will only write to the public Rekor transparency log when the Docker
+      # repository is public to avoid leaking data.  If you would like to publish
+      # transparency data even for private images, pass --force to cosign below.
+      # https://github.com/sigstore/cosign
+      # - name: Sign the published Docker image
+      #   if: ${{ github.event_name != 'pull_request' }}
+      #   env:
+      #     COSIGN_EXPERIMENTAL: "true"
+         # This step uses the identity token to provision an ephemeral certificate
+        # against the sigstore community Fulcio instance.
+      #   run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
       
