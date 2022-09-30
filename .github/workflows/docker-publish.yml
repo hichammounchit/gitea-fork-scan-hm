@@ -20,14 +20,15 @@ name: Create Gitea Docker from source
 on: workflow_dispatch
 env:
   # Use Github registry Hub if empty
-  REGISTRY: ghcr.io
+  REGISTRY: ghcr.io 
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
 
 
 jobs:
+# on build le docker image
   build:
-
+# runner : mini machine virtuelle pour compiler le dockerfile
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -42,9 +43,11 @@ jobs:
  
 
     steps:
+      # ckeck le code
       - name: Checkout repository
         uses: actions/checkout@v3
-
+        
+      # pour signer le contener par defaut - check sum signature
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
       - name: Install cosign
